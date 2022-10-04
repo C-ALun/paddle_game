@@ -19,7 +19,7 @@ screen.tracer(0)
 paddle_l = Paddle(-350, 0)
 paddle_r = Paddle(350, 0)
 ball = Ball()
-score = Scoreboard()
+player_score = Scoreboard()
 
 
 screen.listen()
@@ -30,7 +30,7 @@ screen.onkey(fun=paddle_l.go_down, key='s')
 
 is_game_on = True
 while is_game_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -42,11 +42,11 @@ while is_game_on:
 
     if ball.xcor() > 380:
         ball.reset_position()
-        score.l_score()
+        player_score.l_point()
 
     if ball.xcor() < -380:
         ball.reset_position()
-        score.r_score()
+        player_score.r_point()
 
 
 # Create another paddle
